@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            width: 300px;
+            height: 80px;
+            margin-bottom: 12px;
+            background-image: url("https://developer.mozilla.org/samples/cssref/images/startransparent.gif");
+            border: 30px solid rgba(0, 0, 0, .2);
+            padding: 20px;
+        }
+
+        .bgc2 {
+            background-clip: border-box
+        }
+        .bgc3 {
+            background-clip: padding-box;
+        }
+        .bgc4 {
+            background-clip: content-box;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        background-clip: border-box|padding-box|content-box;
+        border-box	默认值。背景绘制在边框方框内（剪切成边框方框）。
+        padding-box	背景绘制在衬距方框内（剪切成衬距方框）。
+        content-box	背景绘制在内容方框内（剪切成内容方框）。
+     -->
+
+     <div class="bgc1"></div>
+     <div class="bgc2"></div>
+     <div class="bgc3"></div>
+     <div class="bgc4"></div>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 被所有 div 共享 */
+        div {
+            background-color: #FFEE99;
+            width: 300px;
+            height: 80px;
+            margin-bottom: 12px;
+        }
+
+
+        /* 这些例子使用 `background` 缩写 */
+        .exampleone {
+            background: url("https://developer.mozilla.org/samples/cssref/images/startransparent.gif") #FFEE99 2.5cm bottom;
+            background-repeat: no-repeat;
+        }
+
+        .exampletwo {
+            background: url("https://developer.mozilla.org/samples/cssref/images/startransparent.gif") #FFEE99 3em 50%;
+            background-repeat: no-repeat;
+        }
+
+        /*
+多背景图片：每个图片依次和相应的 `background-position` 匹配
+*/
+        .examplethree {
+            background-repeat: no-repeat;
+            background-image: url("https://developer.mozilla.org/samples/cssref/images/startransparent.gif"),
+                url("https://mdn.mozillademos.org/files/7693/catfront.png");
+            background-position: 0px 0px,
+                10%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="exampleone">Example One</div>
+    <div class="exampletwo">Example Two</div>
+    <div class="examplethree">Example Three</div>
+</body>
+
+</html>

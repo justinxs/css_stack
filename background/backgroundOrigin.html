@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            width: 300px;
+            height: 80px;
+            margin-bottom: 12px;
+            background-image: url("https://developer.mozilla.org/samples/cssref/images/startransparent.gif");
+            background-color: #FFEE99;
+            background-repeat: no-repeat;
+            background-position: 0px 0px;
+            border: 10px solid rgba(0,0,0,.2);
+            padding: 20px;
+        }
+
+        .bgo1 {
+            
+        }
+        .bgo2 {
+            background-origin: padding-box;
+        }
+        .bgo3 {
+            background-origin: border-box;
+        }
+        .bgo4 {
+            background-origin: content-box;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        background-Origin属性指定background-position属性应该是相对位置。
+        注意如果背景图像background-attachment是"固定"，这个属性没有任何效果
+
+        background-origin: padding-box|border-box|content-box;
+        padding-box	背景图像填充框的相对位置,默认值---以padding左上角（0，0）为基准
+        border-box	背景图像边界框的相对位置，以border左上角（0，0）为基准
+        content-box	背景图像的相对位置的内容框，以content左上角（0，0）为基准
+
+     -->
+
+     <div class="bgo1"></div>
+     <div class="bgo2"></div>
+     <div class="bgo3"></div>
+     <div class="bgo4"></div>
+</body>
+</html>
