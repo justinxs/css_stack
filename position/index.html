@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: #ccc;
+        }
+        .container {
+            width: 1200px;
+            height: 600px;
+            margin: 100px auto 0;
+            background-color: #fff;
+            position: relative;
+            border: 1px solid red;
+
+            animation: higher 5s ease-in 1s infinite;
+        }
+        /* 设置top 0； bottom 0 若height不写，则高度和父元素高一保持一致 */
+        /* .left {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            background-color: yellow;
+            width: 200px;
+        } */
+
+        /* 设置left 0； right 0 若width不写，则宽度和父元素宽度一保持一致 */
+        /* .left {
+            position: absolute;
+            left: 0;
+            right: 0;
+            background-color: yellow;
+            height: 200px;
+        } */
+
+        /* width height 不设置， top 0; left 0; right 0; bottom 0; 宽高都和父元素保持一致 */
+        .left {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: yellow;
+        }
+
+
+        .right {
+            width: 200px;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            background-color: skyblue;
+        }
+
+        @keyframes higher {
+            0% {height:600px;}
+            50% {height: 800px;}
+            100% {height: 1000px;}
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+</body>
+</html>
