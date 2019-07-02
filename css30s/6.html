@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .container {
+            width: 1200px;
+            margin: 100px auto;
+            text-align: center;
+        }
+
+        /* 默认滚动条样式 */
+        .custom-scrollbar {
+            width: 600px;
+            height: 200px;
+            margin: 0 auto;
+            overflow-y: scroll;
+        }
+
+        /* To style the document scrollbar, remove `.custom-scrollbar` */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+        }
+
+        /* 文字选中底色样式 */
+
+        ::selection {
+            background: aquamarine;
+            color: black;
+        }
+
+        .custom-text-selection::selection {
+            background: deeppink;
+            color: white;
+        }
+
+        .unselectable {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        /* css变量 */
+        :root {
+            /* Place variables within here to use the variables globally. */
+            --default-color: #da7800;
+            --default-keyword: italic;
+            --default-size: 1.25em;
+            --default-complex-value: 1px 1px 2px whitesmoke, 0 0 1em slategray, 0 0 0.2em slategray;
+        }
+
+        .custom-variables {
+            /* --some-color: #da7800;
+            --some-keyword: italic;
+            --some-size: 1.25em;
+            --some-complex-value: 1px 1px 2px whitesmoke, 0 0 1em slategray, 0 0 0.2em slategray; */
+            color: var(--default-color);
+            font-size: var(--default-size);
+            font-style: var(--default-keyword);
+            text-shadow: var(--default-complex-value);
+        }
+
+        /* loading */
+
+        @keyframes donut-spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .donut {
+            display: inline-block;
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-left-color: #7983ff;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: donut-spin 1.2s linear infinite;
+        }
+
+        /* 盒子阴影 */
+
+        .dynamic-shadow {
+            position: relative;
+            width: 10rem;
+            height: 10rem;
+            background: linear-gradient(75deg, #6d78ff, #00ffb8);
+            z-index: 1;
+        }
+
+        .dynamic-shadow::after {
+            content: '';
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background: inherit;
+            top: 0.5rem;
+            left: 0;
+            filter: blur(0.4rem);
+            opacity: 0.7;
+            z-index: -1;
+        }
+
+        /* 旋转动画 */
+
+        :root {
+            --ease-in-quad: cubic-bezier(0.55, 0.085, 0.68, 0.53);
+            --ease-in-cubic: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+            --ease-in-quart: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+            --ease-in-quint: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+            --ease-in-expo: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+            --ease-in-circ: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+            --ease-out-quad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --ease-out-cubic: cubic-bezier(0.215, 0.61, 0.355, 1);
+            --ease-out-quart: cubic-bezier(0.165, 0.84, 0.44, 1);
+            --ease-out-quint: cubic-bezier(0.23, 1, 0.32, 1);
+            --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+            --ease-out-circ: cubic-bezier(0.075, 0.82, 0.165, 1);
+            --ease-in-out-quad: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+            --ease-in-out-cubic: cubic-bezier(0.645, 0.045, 0.355, 1);
+            --ease-in-out-quart: cubic-bezier(0.77, 0, 0.175, 1);
+            --ease-in-out-quint: cubic-bezier(0.86, 0, 0.07, 1);
+            --ease-in-out-expo: cubic-bezier(1, 0, 0, 1);
+            --ease-in-out-circ: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+            /* Place variables in here to use globally */
+        }
+
+        .easing-variables {
+
+            display: inline-block;
+            width: 75px;
+            height: 75px;
+            padding: 10px;
+            color: white;
+            line-height: 50px;
+            text-align: center;
+            background: #333;
+            transition: transform 1s var(--ease-out-quart);
+        }
+
+        .easing-variables:hover {
+            transform: rotate(45deg);
+        }
+
+        /* 刻字 */
+
+        .etched-text {
+            text-shadow: 0 2px darkred;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #dadada;
+        }
+
+        /* 图片占比 */
+
+        .image {
+            background: #34495e;
+            border: 1px solid #34495e;
+            width: 200px;
+            height: 200px;
+        }
+
+        .image-contain {
+            object-fit: contain;
+            object-position: center;
+        }
+
+        .image-cover {
+            object-fit: cover;
+            object-position: right top;
+        }
+
+        /* 垂直居中 */
+
+        .flexbox-centering {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100px;
+            border: 1px solid #ccc;
+        }
+
+        /* 焦点 */
+
+        form {
+            border: 3px solid #2d98da;
+            color: #000000;
+            padding: 4px;
+        }
+
+        form:focus-within {
+            background: #f7b731;
+            color: #000000;
+        }
+
+        /* 全屏 */
+
+        .fullscreen-container {
+            margin: 40px auto;
+            max-width: 700px;
+        }
+
+        .element {
+            padding: 20px;
+            height: 300px;
+            width: 100%;
+            background-color: skyblue;
+        }
+
+        .element p {
+            text-align: center;
+            color: white;
+            font-size: 3em;
+        }
+
+        .element:-ms-fullscreen p {
+            visibility: visible;
+        }
+
+        .element:fullscreen {
+            background-color: #e4708a;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        /* 垂直居中子元素于父元素 */
+
+        .ghosting {
+            height: 300px;
+            background: #0ff;
+        }
+
+        .ghosting:before {
+            content: '';
+            display: inline-block;
+            height: 100%;
+            vertical-align: middle;
+        }
+
+        .ghosting p {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        /* text渐变 */
+
+        .gradient-text {
+            display: inline-block;
+            font-size: 26px;
+            font-weight: bold;
+            background: -webkit-linear-gradient(45deg, red, pink);
+            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text;
+        }
+
+        /* 水平垂直居中 */
+
+
+        .grid-centering {
+            border: 1px solid #ccc;
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            height: 100px;
+        }
+
+        /* 高度过度动画 */
+
+        .trigger {
+            background-color: #dadada;
+        }
+
+        .trigger .el {
+            transition: max-height 0.5s;
+            overflow: hidden;
+            max-height: 0;
+        }
+
+        .trigger:hover>.el {
+            max-height: var(--max-height);
+        }
+
+        /* box hover */
+
+        .hover-shadow-box-animation {
+            display: inline-block;
+            vertical-align: middle;
+            transform: perspective(1px) translateZ(0);
+            box-shadow: 0 0 1px transparent;
+            margin: 10px;
+            transition-duration: 0.3s;
+            transition-property: box-shadow, transform;
+        }
+
+        .hover-shadow-box-animation:hover,
+        .hover-shadow-box-animation:focus,
+        .hover-shadow-box-animation:active {
+            box-shadow: 1px 10px 10px -10px rgba(0, 0, 24, 0.5);
+            transform: scale(1.2);
+        }
+
+        /* 下划线动画 */
+
+        .hover-underline-animation {
+            display: inline-block;
+            position: relative;
+            color: #0087ca;
+        }
+
+        .hover-underline-animation::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #0087ca;
+            transform-origin: bottom right;
+            transition: transform 0.25s ease-out;
+        }
+
+        .hover-underline-animation:hover::after {
+            transform: scaleX(1);
+            transform-origin: center;
+        }
+
+        /* flex box */
+        .flex-box {
+            height: 150px;
+        }
+
+        .flex-container {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .flex-container>div:last-child {
+            background-color: tomato;
+            flex: 1;
+        }
+
+        /* hover 背景色动画 */
+
+        .mouse-cursor-gradient-tracking {
+            position: relative;
+            background: #7983ff;
+            padding: 0.5rem 1rem;
+            font-size: 1.2rem;
+            border: none;
+            color: white;
+            cursor: pointer;
+            outline: none;
+            overflow: hidden;
+        }
+
+        .mouse-cursor-gradient-tracking span {
+            position: relative;
+        }
+
+        .mouse-cursor-gradient-tracking::before {
+            --size: 0;
+            content: '';
+            position: absolute;
+            left: var(--x);
+            top: var(--y);
+            width: var(--size);
+            height: var(--size);
+            background: radial-gradient(circle closest-side, pink, transparent);
+            transform: translate(-50%, -50%);
+            transition: width 0.2s ease, height 0.2s ease;
+        }
+
+        .mouse-cursor-gradient-tracking:hover::before {
+            --size: 200px;
+        }
+
+        /* not选择器 */
+
+        .css-not-selector-shortcut {
+            display: flex;
+            padding-left: 0;
+        }
+
+
+        .css-not-selector-shortcut li {
+            list-style-type: none;
+            margin: 0;
+            padding: 0 0.75rem;
+        }
+
+        .css-not-selector-shortcut li:not(:last-child) {
+            border-right: 2px solid #d2d5e4;
+        }
+
+        /* 隐藏元素 */
+
+        .button .offscreen {
+            border: 0;
+            clip: rect(0 0 0 0);
+            height: 1px;
+            margin: -1px;
+            overflow: hidden;
+            padding: 0;
+            position: absolute;
+            width: 1px;
+        }
+
+        /* 滚动条 */
+
+        .overflow-scroll-gradient {
+            position: relative;
+        }
+
+        .overflow-scroll-gradient::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 240px;
+            height: 25px;
+            background: linear-gradient(rgba(255, 255, 255, 0.001),
+                    white);
+            /* transparent keyword is broken in Safari */
+            pointer-events: none;
+        }
+
+        .overflow-scroll-gradient__scroller {
+            overflow-y: scroll;
+            background: white;
+            width: 240px;
+            height: 200px;
+            padding: 15px;
+            line-height: 1.2;
+        }
+
+
+        /* toggle menu */
+
+        .reference {
+            position: relative;
+            background: tomato;
+            width: 100px;
+            height: 100px;
+        }
+
+        .popout-menu {
+            position: absolute;
+            visibility: hidden;
+            left: 100%;
+            background: #333;
+            color: white;
+            padding: 15px;
+        }
+
+        .reference:hover>.popout-menu,
+        .reference:focus>.popout-menu,
+        .reference:focus-within>.popout-menu {
+            visibility: visible;
+        }
+
+        /* 模拟下划线 */
+
+        .pretty-text-underline {
+            display: inline;
+            text-shadow: 1px 1px #f5f6f9, -1px 1px #f5f6f9, -1px -1px #f5f6f9, 1px -1px #f5f6f9;
+            background-image: linear-gradient(90deg, currentColor 100%, transparent 100%);
+            background-position: bottom;
+            background-repeat: no-repeat;
+            background-size: 100% 1px;
+        }
+
+        .pretty-text-underline::-moz-selection {
+            background-color: rgba(0, 150, 255, 0.3);
+            text-shadow: none;
+        }
+
+        .pretty-text-underline::selection {
+            background-color: rgba(0, 150, 255, 0.3);
+            text-shadow: none;
+        }
+
+        /* hover toggle */
+
+        .sibling-fade {
+            margin-top: 50px;
+        }
+
+        .sibling-fade span {
+            padding: 0 1rem;
+            transition: opacity 0.2s;
+            cursor: pointer;
+        }
+
+        .sibling-fade:hover span:not(:hover) {
+            opacity: 0.5;
+        }
+
+        /* 纯css开关 */
+
+        .css-toggle .switch {
+            position: relative;
+            display: inline-block;
+            width: 40px;
+            height: 20px;
+            background-color: rgba(0, 0, 0, 0.25);
+            border-radius: 20px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .css-toggle .switch::after {
+            content: '';
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            border-radius: 18px;
+            background-color: white;
+            top: 1px;
+            left: 1px;
+            transition: all 0.3s;
+        }
+
+        .css-toggle input[type='checkbox']:checked+.switch::after {
+            transform: translateX(20px);
+        }
+
+        .css-toggle input[type='checkbox']:checked+.switch {
+            background-color: #7983ff;
+        }
+
+        .css-toggle .offscreen {
+            position: absolute;
+            left: -9999px;
+        }
+
+        /* 字数超出 模糊阴影 */
+
+        .truncate-text-multiline {
+            overflow: hidden;
+            display: block;
+            height: 109.2px;
+            margin: 0 auto;
+            font-size: 26px;
+            line-height: 1.4;
+            width: 400px;
+            position: relative;
+        }
+
+        .truncate-text-multiline:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 150px;
+            height: 36.4px;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0), #fff 50%);
+        }
+
+        /* 一行字数超出 ... */
+
+        .truncate-text {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            width: 200px;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="custom-scrollbar">
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.<br />
+                Iure id exercitationem nulla qui repellat laborum vitae, <br />
+                molestias tempora velit natus. Quas, assumenda nisi. <br />
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.<br />
+                Iure id exercitationem nulla qui repellat laborum vitae, <br />
+                molestias tempora velit natus. Quas, assumenda nisi. <br />
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.<br />
+                Iure id exercitationem nulla qui repellat laborum vitae, <br />
+                molestias tempora velit natus. Quas, assumenda nisi. <br />
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.<br />
+                Iure id exercitationem nulla qui repellat laborum vitae, <br />
+                molestias tempora velit natus. Quas, assumenda nisi. <br />
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.<br />
+                Iure id exercitationem nulla qui repellat laborum vitae, <br />
+                molestias tempora velit natus. Quas, assumenda nisi. <br />
+                Quisquam enim qui iure, consequatur velit sit?
+            </p>
+        </div>
+
+        <p class="custom-text-selection">选择这写文字哈哈</p>
+        <p class="custom-text-selection unselectable">You cannot select me!</p>
+
+        <p class="custom-variables">CSS is awesome!</p>
+
+
+        <div class="donut"></div>
+
+        <div class="dynamic-shadow"></div>
+
+        <div class="easing-variables">Hover</div>
+
+        <p class="etched-text">I appear etched into the background.</p>
+
+
+        <div class="image-object">
+            <img class="image image-contain" src="https://picsum.photos/600/200" />
+            <img class="image image-cover" src="https://picsum.photos/600/200" />
+        </div>
+
+        <div class="flexbox-centering">
+            <div class="child">Centered content.</div>
+        </div>
+
+        <div class="focus-within">
+            <form>
+                <label for="given_name">Given Name:</label> <input id="given_name" type="text" /> <br />
+                <label for="family_name">Family Name:</label> <input id="family_name" type="text" />
+            </form>
+        </div>
+
+        <div class="fullscreen-container">
+            <p><em>Click the button below to enter the element into fullscreen mode. </em></p>
+            <div class="element" id="element">
+                <p>I change color in fullscreen mode!</p>
+            </div>
+            <br />
+            <button onclick="var el = document.getElementById('element'); el.requestFullscreen();">
+                Go Full Screen!
+            </button>
+        </div>
+
+        <div class="ghost-trick">
+            <div class="ghosting">
+                <p>Vertically centered without changing the position property.</p>
+            </div>
+        </div>
+
+        <p class="gradient-text">Gradient text</p>
+
+
+        <div class="grid-centering">
+            <div class="child">水平垂直居中</div>
+        </div>
+
+        <div class="trigger">
+            Hover me to see a height transition.
+            <div class="el">content</div>
+        </div>
+
+
+        <p class="hover-shadow-box-animation">Box it!</p>
+
+
+
+        <p class="hover-underline-animation">Hover this text to see the effect!</p>
+
+
+        <div class="flex-box">
+            <div class="flex-container">
+                <div>Div 1</div>
+                <div>Div 2</div>
+                <div>Div 3</div>
+            </div>
+        </div>
+
+
+
+        <button class="mouse-cursor-gradient-tracking"><span>Hover me</span></button>
+
+
+        <ul class="css-not-selector-shortcut">
+            <li>One</li>
+            <li>Two</li>
+            <li>Three</li>
+            <li>Four</li>
+        </ul>
+
+
+        <span class="button">
+            Learn More <span class="offscreen"> about pants</span>
+        </span>
+
+
+        <div class="overflow-scroll-gradient">
+            <div class="overflow-scroll-gradient__scroller">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. <br />
+                Iure id exercitationem nulla qui repellat laborum vitae, <br />
+                molestias tempora velit natus. Quas, assumenda nisi. <br />
+                Quisquam enim qui iure, consequatur velit sit? <br />
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.<br />
+                Iure id exercitationem nulla qui repellat laborum vitae, <br />
+                molestias tempora velit natus. Quas, assumenda nisi. <br />
+                Quisquam enim qui iure, consequatur velit sit?
+            </div>
+        </div>
+
+
+        <div class="reference" tabindex="0">
+            tab
+            <div class="popout-menu">Popout menu</div>
+        </div>
+
+
+        <p class="pretty-text-underline">Pretty text underline without clipping descending letters.</p>
+
+
+        <div class="sibling-fade">
+            <span>Item 1</span> <span>Item 2</span> <span>Item 3</span> <span>Item 4</span>
+            <span>Item 5</span> <span>Item 6</span>
+        </div>
+
+
+        <div class="css-toggle">
+            <input type="checkbox" id="toggle" class="offscreen" /> <label for="toggle" class="switch"></label>
+        </div>
+
+
+        <p class="truncate-text-multiline">
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+            labore et.
+        </p>
+
+
+        <p class="truncate-text">If I exceed one line's width, I will be truncated.</p>
+    </div>
+
+
+    <script>
+        var el = document.querySelector('.trigger>.el')
+        var height = el.scrollHeight
+        el.style.setProperty('--max-height', height + 'px')
+
+
+        var btn = document.querySelector('.mouse-cursor-gradient-tracking')
+        btn.onmousemove = function (e) {
+            var x = e.pageX - btn.offsetLeft - btn.offsetParent.offsetLeft
+            var y = e.pageY - btn.offsetTop - btn.offsetParent.offsetTop
+            btn.style.setProperty('--x', x + 'px')
+            btn.style.setProperty('--y', y + 'px')
+        }
+    </script>
+</body>
+
+</html>
