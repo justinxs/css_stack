@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            margin-top: 100px;
+            text-align: center;
+        }
+
+        #insert-frame {
+            width: 80%;
+            height: 400px;
+        }
+
+        @media only screen and (max-width: 1280px) {
+            #insert-frame {
+                width: 1200px;
+            }
+            .item1 {
+                color: red;
+                background-color: skyblue;
+            }
+        }
+        @media screen and (min-width: 1281px) and (max-width: 1365px) {
+            #insert-frame {
+                width: 1200px;
+            }
+            .item2 {
+                color: red;
+                background-color: skyblue;
+            }
+
+        }
+
+        @media screen and (min-width: 1366px) and (max-width: 1700px) {
+            #insert-frame {
+                width: 1400px;
+            }
+            .item3 {
+                color: red;
+                background-color: skyblue;
+            }
+        }
+
+        @media only screen and (min-width:1800px) {
+            .item4 {
+                color: red;
+                background-color: skyblue;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <iframe id="insert-frame" src="./weather.html"  frameborder="0"></iframe>
+    </div>
+
+
+    <ul class="flag">
+        <li class="item1">max-width: 1280px</li>
+        <li class="item2">min-width: 1281px max-width: 1365px</li>
+        <li class="item3">min-width: 1366px max-width: 1700px</li>
+        <li class="item4">min-width:1800px</li>
+    </ul>
+
+    <script>
+        console.log(document.body.clientWidth);
+    </script>
+</body>
+
+</html>
