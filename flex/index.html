@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flex弹性盒子</title>
+    <style>
+        .test1 {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            width: 400px;
+        }
+        .test1 .item {
+            flex-grow: 0;
+            flex-shrink: 0;
+            background-color: yellow;
+        }
+        .test1 .item1 {
+            width: 0;
+            flex-grow: 1;
+            flex-shrink: 1;
+            background-color: skyblue;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <!-- 主轴长度固定 某一个项目自动缩小和放大，其余项目保持原来长度不变(不缩小不放大) -->
+    <div class="test1">
+        <div class="item">14142323424</div>
+        <div class="item1">afsdfsfddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd</div>
+    </div>
+</body>
+</html>
