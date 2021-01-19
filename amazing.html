@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazing</title>
+    <style>
+        :root {
+            --borderColor: #03A9F3;
+        }
+        .button-list {
+            display: flex;
+        }
+        .button {
+            margin-right: 20px;
+        }
+        .button:nth-last-of-type(1) {
+            margin-right: 0;
+        }
+        .border-button {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100px;
+            height: 40px;
+            border: 1px solid #03A9F3;
+            cursor: pointer;
+        }
+        .border-button::before,
+        .border-button::after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            transition: all .3s ease-in-out;
+        }
+        .border-button::before {
+            top: -5px;
+            left: -5px;
+            border-top: 1px solid var(--borderColor);
+            border-left: 1px solid var(--borderColor);
+        }
+        .border-button::after {
+            right: -5px;
+            bottom: -5px;
+            border-bottom: 1px solid var(--borderColor);
+            border-right: 1px solid var(--borderColor);
+        }
+        .border-button:hover::before,
+        .border-button:hover::after {
+            width: calc(100% + 9px);
+            height: calc(100% + 9px);
+        }
+
+        .dash-border-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100px;
+            height: 40px;
+            outline: 1px solid #333;
+            outline-offset: -1px;
+            cursor: pointer;
+        }
+        .dash-border-button:hover {
+            outline: none;
+            animation: linearGradientMove .3s infinite linear;
+            background: 
+                linear-gradient(90deg, #333 50%, transparent 0) repeat-x,
+                linear-gradient(90deg, #333 50%, transparent 0) repeat-x,
+                linear-gradient(0deg, #333 50%, transparent 0) repeat-y,
+                linear-gradient(0deg, #333 50%, transparent 0) repeat-y;
+            background-size: 4px 1px, 4px 1px, 1px 4px, 1px 4px;
+            background-position: 0 0, 0 100%, 0 0, 100% 0;
+        }
+        @keyframes linearGradientMove {
+            100% {
+                background-position: 4px 0, -4px 100%, 0 -4px, 100% 4px;
+            }
+        }
+
+
+
+        .hello-button {
+            position: relative;
+            width: 120px;
+            height: 64px;
+            line-height: 64px;
+            text-align: center;
+            color: #fff;
+            font-size: 20px;
+            border: 2px solid gold;
+            border-radius: 10px;
+            background: gold;
+            transition: all .3s;
+            cursor: pointer;
+            margin-left: 20px;
+        }
+        .hello-button:hover {
+            filter: contrast(1.1);
+        }
+        
+        .hello-button:active {
+            filter: contrast(0.9);
+        }
+        
+        .hello-button::before,
+        .hello-button::after {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 2px solid gold;
+            transition: all .5s;
+            animation: clippath 3s infinite linear;
+            border-radius: 10px;
+        }
+        
+        .hello-button::after {
+            animation: clippath 3s infinite -1.5s linear;
+        }
+
+        @keyframes clippath {
+            0%,
+            100% {
+                clip-path: inset(0 0 98% 0);
+            }
+            
+            25% {
+                clip-path: inset(0 98% 0 0);
+            }
+            50% {
+                clip-path: inset(98% 0 0 0);
+            }
+            75% {
+                clip-path: inset(0 0 0 98%);
+            }
+        }
+
+
+
+        .rainbow {
+            position: relative;
+            z-index: 0;
+            width: 400px;
+            height: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            padding: 2rem;
+        }
+        .rainbow::before {
+	    	content: '';
+	    	position: absolute;
+	    	z-index: -2;
+	    	left: -50%;
+	    	top: -50%;
+	    	width: 200%;
+	    	height: 200%;
+	    	background-color: #399953;
+	    	background-repeat: no-repeat;
+	    	background-size: 50% 50%, 50% 50%;
+	    	background-position: 0 0, 100% 0, 100% 100%, 0 100%;
+	    	background-image: linear-gradient(#399953, #399953), linear-gradient(#fbb300, #fbb300), linear-gradient(#d53e33, #d53e33), linear-gradient(#377af5, #377af5);
+	    	animation: rotate 4s linear infinite;
+            box-sizing: border-box;
+	    }
+	    .rainbow::after {
+	    	content: '';
+	    	position: absolute;
+	    	z-index: -1;
+	    	left: 6px;
+	    	top: 6px;
+	    	width: calc(100% - 12px);
+	    	height: calc(100% - 12px);
+	    	background: white;
+	    	border-radius: 5px;
+	    	animation: opacityChange 3s infinite alternate;
+            box-sizing: border-box;
+	    }
+        @keyframes opacityChange {
+            50% {
+                opacity:1;
+            }
+            100% {
+                opacity: .5;
+            }
+        }
+        @keyframes rotate {
+            100% {
+                transform: rotate(1turn);
+            }
+        }
+
+
+        .conic {
+            position: relative;
+            z-index: 0;
+            width: 400px;
+            height: 300px;
+            margin: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            padding: 2rem;
+        }
+        .conic::before {
+            content: '';
+            position: absolute;
+            z-index: -2;
+            left: -50%;
+            top: -50%;
+            width: 200%;
+            height: 200%;
+            background-color: #1a232a;
+            background-repeat: no-repeat;
+            background-position: 0 0;
+            background-image: conic-gradient(transparent, rgba(168, 239, 255, 1), transparent 30%);
+            animation: rotate 4s linear infinite;
+            box-sizing: border-box;
+        }
+        
+        .conic::after {
+            content: '';
+            position: absolute;
+            z-index: -1;
+            left: 6px;
+            top: 6px;
+            width: calc(100% - 12px);
+            height: calc(100% - 12px);
+            background: #000;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .conic-demo::after {
+            animation: opacityChange 5s infinite linear reverse;
+        }
+    </style>
+</head>
+<body>
+    <div class="button-list">
+        <div class="border-button button">闭合呀</div>
+        <div class="dash-border-button button">滚动吧</div>
+        <div class="rainbow">彩虹环</div>
+        <div class="hello-button button">Hello</div>
+    </div>
+    <div style="background-color: #000000;margin-top: 40px;display: flex;">
+        <div class="conic"></div>
+        <div class="conic conic-demo"></div>
+    </div>
+</body>
+</html>
