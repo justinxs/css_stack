@@ -25,6 +25,98 @@
             white-space: nowrap;
             overflow: hidden;
         }
+        .box-f {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            -webkit-flex-direction: row;
+            -ms-flex-direction: row;
+            flex-direction: row;
+        }
+        .box {
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -webkit-justify-content: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -webkit-flex-direction: column;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            width: 200px;
+            min-height: 100px;
+            background-color: skyblue;
+        }
+        .box-c {
+            background-color: yellow;
+        }
+        .example-item {
+    padding: 1em;
+    border-radius: 5px;
+    max-width: 15em;
+}
+.l-grid-half {
+    width: 50%;
+}
+.l-flex-parent {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+}
+.l-flex-child {
+    padding: 1em;
+    min-height: 100vh;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+.t-purple {
+    background-color: #7b5a9e;
+    color: #fff;
+}
+.t-white {
+    background-color: #fff;
+    color: #7b5a9e;
+}
+.t-white .example-item {
+    background: #7b5a9e;
+    color: #fff;
+}
+.t-purple .example-item {
+    background: #fff;
+    color: #000;
+}
     </style>
 </head>
 <body>
@@ -32,6 +124,29 @@
     <div class="test1">
         <div class="item">14142323424</div>
         <div class="item1">afsdfsfddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd</div>
+    </div>
+
+    <div class="box-f">
+        <div class="box">
+            <span class="box-c">asdasd</span>
+        </div>
+    </div>
+    
+
+
+    <div class="l-flex-fix">
+        <div class="l-flex-parent">
+            <div class="t-purple l-flex-child l-grid-half">
+                <div class="example-item">
+                    This is my fix for the flexbox min-height bug in IE11/10 mentioned by Philip Walton in <a href="#https://github.com/philipwalton/flexbugs#3-min-height-on-a-column-flex-container-wont-apply-to-its-flex-items">Flexbugs</a>, bug number #3
+                </div>
+            </div>
+            <div class="t-white l-flex-child l-grid-half">
+                <div class="example-item">
+                    You need to wrap any flex-direction:column inside a flex-direction:row (or just display:flex for simple)
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>
